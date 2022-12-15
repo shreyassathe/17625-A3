@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package service;
+
+//import "google/protobuf/empty.proto";
+
+service InventoryService {
+
+  rpc CreateBook(Book) returns (Empty) {};
+  //reference : https://stackoverflow.com/questions/31768665/can-i-define-a-grpc-call-with-a-null-request-or-response
+
+  rpc GetBook(ISBN) returns (Book) {};
+}
+
+message Empty{}
+
+message ISBN{
+  string isbn = 1;
+}
+
+message Book{
+  ISBN id = 1;
+  string name = 2;
+  string author = 3;
+
+  enum Genre{
+    suspense = 0;
+    thriller = 1;
+    nonfiction = 2;
+    selfhelp = 3;
+  }
+
+  Genre genre = 5;
+
+  int32 year = 4;
+}
+
+message InventoryItem{
+  oneof book {
+    Book bk = 5;
+  }
+}
