@@ -1,7 +1,10 @@
+#Self made client for easier testing
+#not for evaluation
+
+
 import grpc
 import service.library_pb2
 import service.library_pb2_grpc
-import time
 
 def run():
     while(True):

@@ -19,11 +19,15 @@ BookDictionary = dict();
 
 BookDictionary["1a"] = Book("1a", "Master of Game", "Sidney Sheldon", 1, 2000)
 BookDictionary["2b"] = Book("2b", "Harry Potter", "JK Rowling", 2, 2000)
+BookDictionary["3c"] = Book("3c", "Subtle Art", "Charles", 3, 2010)
+BookDictionary["4q"] = Book("4q", "Concepts of Physics", "HC Verma", 3, 2005)
 
 def add_book(isbn, name, author, genre, year):
     BookDictionary[isbn] = Book(isbn, name, author, genre, year)
 
 def get_book(isbn):
+    if isbn not in BookDictionary.keys():
+        return Book("", "", "", 0, 0)
     return BookDictionary[isbn]
 
 def print_book_dict():
